@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<title>Sandy's Smart Temperature</title>
+<div class="content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-title">
+                <h2><a href=../table_data?type=temperature>Your Home Environment - Temperature</a></h2>
+            </div> <!-- /.section -->
+        </div> <!-- /.row -->
+        <div align="center">
+            <embed type="image/svg+xml" src={{ graph_data|safe }} style='height:700px ; width:1000px'/>
+        </div>
+        <!-- /.row -->
+    </div> <!-- /.container -->
+</div> <!-- /.content-section -->
+
+
+{% endblock %}

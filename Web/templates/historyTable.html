@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 30%;
+        color: black;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<title>Sandy's Smart Temperature</title>
+<div class="content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-title">
+                <h2>Your Home Environment</h2>
+            </div> <!-- /.section -->
+        </div> <!-- /.row -->
+        <div align="center">
+
+            <h2>This is Temperature Data History </h2>
+            <h2>{{day}}</h2>
+            <br>
+
+
+
+        <h4><a href=../table_data?type=temperature>GO BACK</h4>
+        </div>
+        <!-- /.row -->
+    </div> <!-- /.container -->
+</div> <!-- /.content-section -->
+
+
+{% endblock %}

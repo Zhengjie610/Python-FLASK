@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 30%;
+        color: black;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<title>Sandy's Smart Temperature</title>
+<div class="content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-title">
+                <h2>Your Home Environment - {{type.upper()}}</h2>
+            </div> <!-- /.section -->
+        </div> <!-- /.row -->
+        <div align="center">
+
+            <h2>This is {{type.upper()}} Data History </h2>
+            <h4><a href=../history?tempday=7>Click to see Last 7 Days</a></h4>
+            <br>
+            <form action="/history?tempday=">
+                <input type="date" name="tempday">
+                <input type="submit">
+            </form>
+            <p><br></p>
+
+            <table>
+
+                <tr>
+                    <th>Time</th>
+                    <th>Current Value</th>
+                    <th>Status</th>
+
+                </tr>
+
+                {% if type=='aqi' %}
+                {% for d,t in aqi %}
+                <tr>
+                    <td>{{t}}</td>
+                    <td>{{d}}</td>
+                    {% if d<=50 %}
+                    <td>GOOD</td>
+                    {% else %}
+                    <td>NOT GOOD</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% endif %}
+
+                {% if type=='humidity' %}
+                {% for d,t in humi %}
+                <tr>
+                    <td>{{t}}</td>
+                    <td>{{d}}</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+
+                {% if type=='temperature' %}
+                {% for d,t in temp %}
+                <tr>
+                    <td>{{t}}</td>
+                    <td>{{d}}</td>
+                    {% if d<30 %}
+                    <td>GOOD</td>
+                    {% else %}
+                    <td>Hot</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% endif %}
+
+                {% if type=='pm25' %}
+                {% for d,t in pm25 %}
+                <tr>
+                    <td>{{t}}</td>
+                    <td>{{d}}</td>
+                    {% if d<50 %}
+                    <td>GOOD</td>
+                    {% else %}
+                    <td>Bad</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% endif %}
+
+                {% if type=='pm10' %}
+                {% for d,t in pm10 %}
+                <tr>
+                    <td>{{t}}</td>
+                    <td>{{d}}</td>
+                    {% if d<50 %}
+                    <td>GOOD</td>
+                    {% else %}
+                    <td>Bad</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% endif %}
+
+
+                {% if type=='co' %}
+                {% for d,t in co %}
+                <tr>
+                    <td>{{t}}</td>
+                    <td>{{d}}</td>
+                    {% if d<50 %}
+                    <td>GOOD</td>
+                    {% else %}
+                    <td>Bad</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% endif %}
+
+                {% if type=='co2' %}
+                {% for d,t in co2 %}
+                <tr>
+                    <td>{{t}}</td>
+                    <td>{{d}}</td>
+                    {% if d<50 %}
+                    <td>GOOD</td>
+                    {% else %}
+                    <td>Bad</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                {% endif %}
+
+
+            </table>
+
+
+        </div>
+        <!-- /.row -->
+    </div> <!-- /.container -->
+</div> <!-- /.content-section -->
+
+
+{% endblock %}

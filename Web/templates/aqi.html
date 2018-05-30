@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+<style type="text/css">
+    .important {
+        color: #336699;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<title>Sany's Smart Air Quality Index</title>
+<div class="content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-title">
+
+            <h2>Your Home Environment</h2>
+                <h2><a href=../table_data?type=aqi>AQI History</a></h2>
+            </div> <!-- /.section -->
+        </div> <!-- /.row -->
+        <div align="center">
+            <embed type="image/svg+xml" src={{ aqi_data|safe }} style='max-width:1000px'/>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-title">
+                    <br/>
+                    <br/>
+                    <h2><a href=../table_data?type=humidity>HUMIDITY</a></h2>
+
+                </div> <!-- /.section -->
+            </div> <!-- /.row -->
+            <div align="center">
+                <embed type="image/svg+xml" src={{ humi_data|safe }} style='max-width:1000px'/>
+            </div>
+            <!-- /.row -->
+
+
+        </div> <!-- /.container -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-title">
+                    <br/>
+                    <br/>
+
+                    <h2><a href=../table_data?type=pm25>PM2.5</a></h2>
+                </div> <!-- /.section -->
+            </div> <!-- /.row -->
+            <div align="center">
+                <embed type="image/svg+xml" src={{ pm25_data|safe }} style='max-width:1000px'/>
+            </div>
+            <!-- /.row -->
+
+
+        </div> <!-- /.container -->
+
+         <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-title">
+                    <br/>
+                    <br/>
+
+                    <h2><a href=../table_data?type=pm10>PM10</a></h2>
+                </div> <!-- /.section -->
+            </div> <!-- /.row -->
+            <div align="center">
+                <embed type="image/svg+xml" src={{ pm10_data|safe }} style='max-width:1000px'/>
+            </div>
+            <!-- /.row -->
+
+
+        </div> <!-- /.container -->
+
+         <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-title">
+                    <br/>
+                    <br/>
+
+                     <h2><a href=../table_data?type=co>CO</a></h2>
+                </div> <!-- /.section -->
+            </div> <!-- /.row -->
+            <div align="center">
+                <embed type="image/svg+xml" src={{ co_data|safe }} style='max-width:1000px'/>
+            </div>
+            <!-- /.row -->
+
+
+        </div> <!-- /.container -->
+
+         <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-title">
+                    <br/>
+                    <br/>
+
+                    <h2><a href=../table_data?type=co>Co2</a></h2>
+                </div> <!-- /.section -->
+            </div> <!-- /.row -->
+            <div align="center">
+                <embed type="image/svg+xml" src={{ co2_data|safe }} style='max-width:1000px'/>
+            </div>
+            <!-- /.row -->
+
+
+        </div> <!-- /.container -->
+    </div> <!-- /.content-section -->
+
+
+    {% endblock %}
